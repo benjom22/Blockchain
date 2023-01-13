@@ -1,18 +1,17 @@
 pragma solidity >=0.7.0 <0.9.0;
 
-contract MyContract{
-    Customer[] public customers;
-    uint256 customerCounter;
+contract Charity{
+    address payable public beneficiary;
+    mapping(address => uint) public donations;
+    address public owner;
+    event Donated(address indexed _from, uint _value);
 
-    struct Customer{
-        string name;
-        string lastname;
-        uint256 id;
+    constructor() public {
+        owner = msg.sender;
     }
 
-    function addCustomer(string _name, string _lastname, uint256 _id){
-        customers.push(_name, _lastname, _id);
-        customerCounter+=1;
+    function donate() public payable {
+        
     }
 
 }
