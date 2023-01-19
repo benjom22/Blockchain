@@ -1,4 +1,6 @@
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Charity {
     address payable public beneficiary;
@@ -6,7 +8,7 @@ contract Charity {
     address public owner;
     event Donated(address indexed _from, uint _value);
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
     }
 
@@ -16,15 +18,15 @@ contract Charity {
         emit Donated(msg.sender, msg.value);
     }
 
-    function viewDonations() public view returns (address[] memory, uint[] memory) {
+   /* function viewDonations() public view returns (address[] memory, uint[] memory) {
         address[] memory donors = new address[](address(0));
         uint[] memory amounts = new uint[](0);
-        for (address user in donations){
+        for (uint i=0; i<donations.length; i++){
             donors.push(user);
             amounts.push(donations[user]);
         }
         return (donors, amounts);
-    }
+    }*/
 
     function viewBalance() public view returns (uint) {
         return address(this).balance;
